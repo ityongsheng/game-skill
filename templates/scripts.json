@@ -1,0 +1,187 @@
+{
+  "$schema": "version 1.0",
+  "description": "场景话术模板库 — 基于Mikey和Tankman的系统提炼。Agent根据场景选择模板，使用{{variable}}填入上下文具体值",
+  "meta": {
+    "last_updated": "2026-06-23",
+    "usage": "选择匹配的场景模板，将{{placeholder}}替换为用户上下文中的实际值。每条模板附带使用注释。"
+  },
+  "templates": {
+    "openers": {
+      "description": "开场白话术模板",
+      "scenarios": [
+        {
+          "id": "opener_street_direct",
+          "name": "街头直接开场",
+          "scenario": "街头/商圈看到心仪女生",
+          "source": "Mikey A1",
+          "variants": [
+            {
+              "style": "松弛感",
+              "text": "嗨你好，我刚才看到你，觉得你{{specific_quality}}，所以就过来打个招呼。",
+              "notes": ["语气要轻松，像闲聊", "不要背台词感", "被拒立刻微笑撤退", "specific_quality: 穿搭很有感觉 / 气质很特别 / 笑起来很好看"]
+            },
+            {
+              "style": "直接简洁",
+              "text": "你好，我在那边看到你，觉得你很有气质，想认识你一下。",
+              "notes": ["适合自信状态", "眼神直视", "不适合对方带耳机或明显赶路时"]
+            },
+            {
+              "style": "场景融入",
+              "text": "你好，请问这附近有什么好喝的咖啡店吗？...（对方回应后转）其实我刚看到你，觉得你{{specific_quality}}，所以找个借口过来。",
+              "notes": ["先用场景问题破冰再转真实意图", "转折要自然，不要突兀", "适合对方在逛街/停留时"]
+            }
+          ]
+        },
+        {
+          "id": "opener_social_proof",
+          "name": "社交场合开场",
+          "scenario": "聚会/活动/朋友介绍",
+          "source": "综合",
+          "variants": [
+            {
+              "style": "自然过渡",
+              "text": "你也是{{event_name}}的朋友吗？我之前好像没见过你。",
+              "notes": ["适合群体场合", "不要急着暴露意图", "先建立社交连接再单独聊"]
+            },
+            {
+              "style": "第三方话题",
+              "text": "刚才{{shared_experience}}，你怎么看？",
+              "notes": ["利用共享经历建立连接", "shared_experience: 刚才那个演讲 / 那个表演 / 那个游戏"]
+            }
+          ]
+        },
+        {
+          "id": "opener_night_game",
+          "name": "夜店/酒吧开场",
+          "scenario": "夜店/酒吧等夜场",
+          "source": "Mikey A1",
+          "variants": [
+            {
+              "style": "夜店直接",
+              "text": "（轻拍肩膀）你一个人吗？一起喝一杯？",
+              "notes": ["夜店要更直接", "环境嘈杂所以动作先于语言", "不要问'可以请你喝一杯吗'——直接邀约"]
+            },
+            {
+              "style": "夜店轻松",
+              "text": "你们看起来玩得很开心，我过来打个招呼。我是{{your_name}}。",
+              "notes": ["适合对方跟朋友在一起时", "先融入群体再单独接触"]
+            }
+          ]
+        }
+      ]
+    },
+    "invitations": {
+      "description": "邀约话术模板",
+      "scenarios": [
+        {
+          "id": "invite_direct_turn",
+          "name": "搭讪后当天约会",
+          "scenario": "搭讪成功、气氛好时",
+          "source": "Mikey A1-A2",
+          "variants": [
+            {
+              "style": "自然转场",
+              "text": "我刚好要去{{nearby_place}}喝杯东西，一起吧？",
+              "notes": ["语气随意，不是问句是邀约", "地点选在你熟悉的区域", "nearby_place: 附近的那家咖啡店 / 那边的奶茶店"]
+            }
+          ]
+        },
+        {
+          "id": "invite_phone",
+          "name": "电话邀约",
+          "scenario": "微信聊了两天没进展",
+          "source": "Mikey A3",
+          "variants": [
+            {
+              "style": "直接电话",
+              "text": "我刚下班，想起你了，打个电话问问你周末有空没？{{day}}下午{{time}}我们去{{place}}。",
+              "notes": ["通话控制在1-3分钟", "确定后立刻挂电话不闲聊", "day/time/place 要具体，不要问'你什么时候有空'"]
+            }
+          ]
+        },
+        {
+          "id": "invite_strong_agent",
+          "name": "强施代理邀约",
+          "scenario": "女生犹豫/打太极时",
+          "source": "Mikey A3",
+          "variants": [
+            {
+              "style": "不给犹豫空间",
+              "text": "别纠结了，{{day}}{{time}}我刚好在{{place}}附近，你过来。",
+              "notes": ["用确定性代替犹豫", "适合高价值姿态", "对方是绿茶型/喜欢玩暧昧时特别有效"]
+            }
+          ]
+        }
+      ]
+    },
+    "asd_break": {
+      "description": "ASD（反荡妇防御）化解话术",
+      "scenarios": [
+        {
+          "id": "asd_just_sit",
+          "name": "给合理化的台阶",
+          "scenario": "女生对去私密空间犹豫时",
+          "source": "Mikey A2",
+          "variants": [
+            {
+              "style": "降低承诺",
+              "text": "就只是坐坐，聊聊天，不干嘛。",
+              "notes": ["语气真诚", "不要说得太刻意", "最基础也是最有效的台阶"]
+            },
+            {
+              "style": "理由合理化",
+              "text": "我家就在这附近，上去看看我养的{{pet_or_thing}}。",
+              "notes": ["用具体理由降低心理门槛", "pet_or_thing: 猫 / 狗 / 收藏的唱片 / 刚装修好的书房"]
+            },
+            {
+              "style": "时间限制",
+              "text": "坐半小时我就送你回去，明天不是还要{{her_schedule}}吗。",
+              "notes": ["给出可预期的结束时间", "提到她的日程显示你在意她的安排"]
+            }
+          ]
+        }
+      ]
+    },
+    "text_game": {
+      "description": "微信聊天回复模板",
+      "scenarios": [
+        {
+          "id": "text_no_reply",
+          "name": "对方不回消息",
+          "scenario": "发了消息女生没回",
+          "source": "Mikey A3",
+          "variants": [
+            {
+              "style": "冷静等待",
+              "text": "（不追发，等24-48小时后再发新话题）",
+              "notes": ["绝对不要追问'怎么不回我'", "不要发'？' '在干嘛'", "用新话题重新开场"]
+            },
+            {
+              "style": "破冰重开",
+              "text": "（发一张有趣的{{photo_type}}）刚看到这个，想到你了。",
+              "notes": ["不要提之前没回的事", "photo_type: 照片 / 截图 / 视频", "内容要有趣，不是风景照"]
+            }
+          ]
+        },
+        {
+          "id": "text_cold_response",
+          "name": "对方回复冷淡",
+          "scenario": "女生回'嗯''哦''好的'",
+          "source": "Mikey A3",
+          "variants": [
+            {
+              "style": "同步降频",
+              "text": "（同步降低回复频率和长度，不追问原因）",
+              "notes": ["投资对称原则", "对方慢你更慢，不要加倍投入", "这是在传递'你的冷淡不影响我'"]
+            },
+            {
+              "style": "价值展示切换",
+              "text": "刚在{{place}}做{{activity}}，看到{{something_interesting}}。",
+              "notes": ["切换到展示你的生活", "不要继续问问题", "创造一个她可以接的话题入口"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

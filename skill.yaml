@@ -1,0 +1,265 @@
+# ============================================
+# game-skill v2.0: 搭讪学 + 两性博弈 完整技能体系
+# 核心路由入口 — Agent 加载本文件获取触发词→模块映射
+# ============================================
+name: game-skill
+version: "2.0.0"
+description: >
+  搭讪学+两性博弈完整技能体系。基于Mikey(搭讪玩家)76个视频+凡公子(Tankman)78个视频的系统提炼，
+  共154个视频、~134万字原始转录。涵盖搭讪实战、约会全流程、网聊技巧、心态内核、框架控制、
+  女本位批判、17种女生类型处理策略、常见错误大全。
+source: 基于Mikey(搭讪玩家)76个视频 + FanGame(Tankman)78个视频的系统提炼
+generated: 2026-06-11
+updated: 2026-06-23
+
+# ---- Trigger System ----
+# 与 SKILL.md 的 YAML frontmatter 保持完全一致
+trigger:
+  keywords:
+    - 搭讪
+    - 约会
+    - 把妹
+    - 撩妹
+    - 怎么追
+    - 怎么约
+    - 怎么聊
+    - 怎么收尾
+    - 框架
+    - 行为线索
+    - 御姐
+    - 绿茶
+    - 社恐女
+    - 缺安全感
+    - 女生类型
+    - PUA
+    - Game
+    - Game技巧
+    - 搭讪学
+    - 两性博弈
+    - 怎么吸引
+    - 怎么保持框架
+    - 隐形支配
+    - 松弛感
+    - 坚定感
+    - 个性样本
+    - 筛选心态
+    - 废物测试
+    - 帮我想个开场白
+    - 她不回消息怎么办
+    - 约会冷场怎么办
+    - 怎么带回家
+    - 女生说不要怎么办
+    - 怎么判断她对我有没有意思
+    - 女本位
+    - 供养者
+    - 猎人特质
+    - 阿尔法男性
+    - NPC觉醒
+  exclude:
+    - 怎么谈恋爱
+    - 怎么追女生
+
+# ---- Intent Routing Table ----
+# priority: 15=exact girl type / 10=specific technique / 8=decision tree / 7=cross-ref / 5=broad theory / 3=supplement
+# 多个意图匹配时，按优先级排序；同优先级叠加加载
+intents:
+  - id: approach_technique
+    label: 搭讪实战技术
+    module: modules/a_mikey_system.md
+    triggers: [搭讪, 开场白, 3秒法则, 怎么认识, 怎么加微信, 街头搭讪, 眼神漂移, 松弛感, 坚定感, 私密距离, 亲和力, 怎么开场, 迈步]
+    context_section: A1
+    priority: 10
+
+  - id: date_process
+    label: 约会全流程
+    module: modules/a_mikey_system.md
+    triggers: [约会流程, 转场, 带回家, 私密空间, ASD, 隐形支配, 冷场, 冷读术, 声音调情, 前30分钟, 支配游戏, 怎么收尾, 转场技巧]
+    context_section: A2
+    priority: 10
+
+  - id: chat_skills
+    label: 网聊技巧
+    module: modules/a_mikey_system.md
+    triggers: [微信聊天, 不回消息, 电话邀约, 筛选聊天, 冷淡反制, 查户口, 秒回, 外卖聊天, 发照片筛选, 怎么聊, 她不回消息]
+    context_section: A3
+    priority: 10
+
+  - id: mindset_core
+    label: 心态与内核
+    module: modules/a_mikey_system.md
+    triggers: [玩家心态, 内核, 自信, 恐惧, NPC理论, 多线并存, 拒绝脱敏, 主角心态, 21天觉醒, 恐惧等级, NPC觉醒, 怎么克服搭讪恐惧]
+    context_section: A4
+    priority: 10
+
+  - id: attraction_framework
+    label: 吸引/框架/个性样本
+    module: modules/a_mikey_system.md
+    triggers: [吸引, 行为线索, 个性样本, 框架主导, 性张力, 五样全可, 盘驴邓小闲, 强行为线索, 怎么吸引, 怎么保持框架]
+    context_section: A5
+    priority: 10
+
+  - id: social_critique
+    label: 社会观察/女本位理论
+    module: modules/a_mikey_system.md
+    triggers: [女本位社会, 矩阵, Matrix, 社会底层代码, 女性社会, 性别政治, 女本位, 供养者, 阿尔法]
+    context_section: A6
+    priority: 5
+
+  - id: teaching_cases
+    label: 教学复盘案例
+    module: modules/a_mikey_system.md
+    triggers: [教学案例, 复盘, 工程师案例, 女同事三角, 理论中毒, 实战复盘]
+    context_section: A7
+    priority: 5
+
+  - id: tankman_relationship
+    label: 两性关系/约会 (Tankman)
+    module: modules/b_tankman_system.md
+    triggers: [两性博弈, 筛选追选, 价值匹配, 做局法, 真假窗口, 直觉流判断, 反向筛选, 价值展示降维, 怎么判断她对我有没有意思]
+    context_section: B1
+    priority: 10
+
+  - id: tankman_appearance
+    label: 审美/形象 (Tankman)
+    module: modules/b_tankman_system.md
+    triggers: [穿搭, 审美, 形象, 健身, 微调, 增高鞋, 氛围感, 皮肤管理, 体味, 三重审美, 穿搭减法, 怎么穿]
+    context_section: B2
+    priority: 10
+
+  - id: tankman_growth
+    label: 男性成长 (Tankman)
+    module: modules/b_tankman_system.md
+    triggers: [男性成长, 三线全修, 认知破局, 四阶蜕变, 自信积累, 男性魅力, 城市降维, 男性魅力四层]
+    context_section: B3
+    priority: 10
+
+  - id: tankman_career
+    label: 赚钱/事业 (Tankman)
+    module: modules/b_tankman_system.md
+    triggers: [赚钱, 事业, 信息差, 流量思维, 认知变现, 执行力, 创业, 个人IP, 低成本试错, 时间杠杆]
+    context_section: B4
+    priority: 5
+
+  - id: tankman_society
+    label: 社会观察/心态 (Tankman)
+    module: modules/b_tankman_system.md
+    triggers: [灰度认知, 向阳而生, 情绪止损, 底层代码解码, 自我觉醒]
+    context_section: B5
+    priority: 5
+
+  - id: girl_type_advice
+    label: 女生类型处理
+    module: modules/c_girl_types.md
+    triggers: [女生类型, 御姐, 绿茶, 小骚, 社恐, 内向, 保守, 传统, 白富美, 富家女, 女拳, 女权, 留学生, 外籍, 模特, 捞女, 拜金, 独立女性, 事业型, 闷骚, 反差, 初恋, 纯情, 网红, 女主播, 学霸, 高知, 空姐, 服务行业, 富婆, 年上, 空虚女, 情感缺失, 高冷]
+    priority: 15
+
+  - id: error_check
+    label: 常见错误检查
+    module: modules/d_error_ledger.md
+    triggers: [错误, 注意事项, 不要, 避免, 正确做法, 怎么改, 认知错误, 搭讪错误, 约会错误, 聊天错误, 心态错误, 常见错误]
+    priority: 10
+
+  - id: golden_quotes
+    label: 金句引用
+    module: modules/f_golden_quotes.md
+    triggers: [金句, 原文引用, Mikey说, 凡公子说, 经典语录, 名人名言, 金句录]
+    priority: 3
+
+  - id: approach_decision
+    label: 搭讪场景决策
+    module: decision_trees/approach_flow.md
+    triggers: [什么场景搭讪, 怎么开场合适, 搭讪决策, 场景判断, 搭讪场景]
+    priority: 8
+
+  - id: date_decision
+    label: 约会转场决策
+    module: decision_trees/date_flow.md
+    triggers: [什么时候转场, 约会到哪步了, 转场决策, 私密空间时机, 约会决策]
+    priority: 8
+
+  - id: script_template
+    label: 话术模板
+    module: templates/scripts.json
+    triggers: [开场白模板, 邀约模板, 怎么说, 话术, 回复模板, 台词, 帮我回复]
+    priority: 8
+
+  - id: cross_reference
+    label: 双导师交叉对照
+    module: index/cross_mapping.csv
+    triggers: [Mikey和Tankman对比, 两种方法哪个好, 综合观点, 交叉对照, 双视角, 对比]
+    priority: 7
+
+# ---- Quick-Reference Technique Table (from original Part E) ----
+techniques:
+  approach:
+    - { name: "3秒法则", summary: "看到目标后倒计时3秒，必须迈步", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "松弛感开场", summary: "语气轻松如闲聊，不背台词", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "亲和力削减", summary: "穿柔和色、侧身接近、'吓到你了吗'", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "坚定感训练", summary: "眼神不漂移、语气降调结尾", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "私密距离突破", summary: "侧后方45度接近，轻拍手臂", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "及时约会转场", summary: "搭讪后直接提议去喝东西", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+    - { name: "街头破冰法", summary: "直接说明来意'想认识你'，递手机", source: "modules/b_tankman_system.md", anchor: "b3-男性成长" }
+    - { name: "背景融入法", summary: "从对方正在做的事情开始聊", source: "modules/a_mikey_system.md", anchor: "a1-搭讪实战" }
+  date:
+    - { name: "前30分钟黄金法则", summary: "前30分钟建立舒适，后30分钟拉近", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "隐形支配", summary: "不讨好、不怒自威，让女生下意识配合", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "转场回家三步走", summary: "续摊→附近→上去坐坐", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "ASD合理化", summary: "给台阶'就只是坐坐'", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "冷读术", summary: "用观察+推测建立深度连接", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "声音调情法", summary: "降低音调、放慢语速", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "做局法", summary: "制造封闭空间创造亲密机会", source: "modules/b_tankman_system.md", anchor: "b1-两性关系约会" }
+    - { name: "真假窗口识别", summary: "看她是否会为你调整计划", source: "modules/b_tankman_system.md", anchor: "b1-两性关系约会" }
+  chat:
+    - { name: "筛选式聊天", summary: "不追求而是判断对方是否值得", source: "modules/a_mikey_system.md", anchor: "a3-网聊技巧" }
+    - { name: "电话邀约法", summary: "不打字直接打电话约出来", source: "modules/a_mikey_system.md", anchor: "a3-网聊技巧" }
+    - { name: "强施代理邀约", summary: "不给犹豫空间直接定时间地点", source: "modules/a_mikey_system.md", anchor: "a3-网聊技巧" }
+    - { name: "冷淡反制", summary: "对方回复慢你同步慢", source: "modules/a_mikey_system.md", anchor: "a3-网聊技巧" }
+    - { name: "画面感构建法", summary: "用描述性语言创造想象空间", source: "modules/b_tankman_system.md", anchor: "b3-男性成长" }
+    - { name: "八二法则", summary: "80%闲聊20%升级", source: "modules/a_mikey_system.md", anchor: "a7-教学复盘案例" }
+  mindset:
+    - { name: "NPC理论", summary: "你是生活的主角，她们是NPC", source: "modules/a_mikey_system.md", anchor: "a4-心态与内核" }
+    - { name: "多线并存法", summary: "同时接触3-5个人分散注意力", source: "modules/a_mikey_system.md", anchor: "a4-心态与内核" }
+    - { name: "恐惧等级暴露", summary: "从低难度到高难度逐级脱敏", source: "modules/a_mikey_system.md", anchor: "a4-心态与内核" }
+    - { name: "21天觉醒法", summary: "每天做一件突破舒适区的事", source: "modules/b_tankman_system.md", anchor: "b5-社会观察自我提升心态" }
+    - { name: "三线全修", summary: "事业情感生活三个维度同步发展", source: "modules/b_tankman_system.md", anchor: "b3-男性成长" }
+    - { name: "四阶蜕变", summary: "破除滤镜→积累实感→认知修正→情绪稳定", source: "modules/b_tankman_system.md", anchor: "b3-男性成长" }
+    - { name: "灰度思维", summary: "世界不是非黑即白", source: "modules/b_tankman_system.md", anchor: "b5-社会观察自我提升心态" }
+  close:
+    - { name: "渐进式转场", summary: "从公共到私密逐步过渡", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "ASD合理化解", summary: "给女生一个说服自己的理由", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "隐形支配收尾", summary: "不怒自威的气场让她配合", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+    - { name: "调情升级", summary: "从肩膀到手的触碰逐级加码", source: "modules/a_mikey_system.md", anchor: "a2-约会全流程" }
+
+# ---- Module Registry ----
+modules:
+  a_mikey_system:
+    path: modules/a_mikey_system.md
+    description: Mikey搭讪学完整体系 (A1-A7)
+    sections: [A1-搭讪实战, A2-约会全流程, A3-网聊技巧, A4-心态与内核, A5-吸引框架个性样本, A6-社会观察女本位理论, A7-教学复盘案例]
+  b_tankman_system:
+    path: modules/b_tankman_system.md
+    description: Tankman完整体系 (B1-B5)
+    sections: [B1-两性关系约会, B2-审美形象, B3-男性成长, B4-赚钱事业, B5-社会观察自我提升心态]
+  c_girl_types:
+    path: modules/c_girl_types.md
+    description: 17种女生类型处理策略 (含双导师合成)
+    type_count: 17
+  d_error_ledger:
+    path: modules/d_error_ledger.md
+    description: 常见错误大全 (5大分类)
+    categories: [D1-认知类, D2-搭讪类, D3-约会类, D4-聊天类, D5-心态类]
+  f_golden_quotes:
+    path: modules/f_golden_quotes.md
+    description: 原文金句录 (含话题/场景/来源标签索引)
+    quote_count: 22
+
+# ---- Decision Tree References ----
+decision_trees:
+  approach_flow: decision_trees/approach_flow.md
+  date_flow: decision_trees/date_flow.md
+
+# ---- Cross-Mapping Reference ----
+cross_mapping: index/cross_mapping.csv
+
+# ---- Template Scripts Reference ----
+scripts: templates/scripts.json
