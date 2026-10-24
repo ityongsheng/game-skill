@@ -1,0 +1,8 @@
+interface:
+  display_name: "Game 知识库"
+  short_description: "查询并增量维护可回溯的 Game 理论资料库"
+  brand_color: "#3157A4"
+  default_prompt: "使用 $game-skill 检索或增量更新 Game 知识库，并保留独立来源与矛盾观点。"
+
+policy:
+  allow_implicit_invocation: true

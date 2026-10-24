@@ -1,0 +1,8 @@
+{
+  "data_root": "/Users/liyongsheng/Documents/Game知识库",
+  "repo_root": "/Users/liyongsheng/Code/codex/game-skill",
+  "whisper_model": "base",
+  "whisper_language": "Chinese",
+  "ocr_language": "chi_sim+eng",
+  "rclone_remote": "gdrive:"
+}

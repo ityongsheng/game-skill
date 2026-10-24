@@ -1,3 +1,11 @@
+---
+module_id: b-tankman-system
+title: FanGame Tankman 体系
+triggers: [Tankman, 凡公子, 两性博弈, 筛选追选, 价值匹配, 做局法, 真假窗口, 男性成长, 三线全修, 穿搭, 赚钱]
+priority: 10
+description: Tankman 两性关系、形象、男性成长、事业与社会观察体系
+---
+
 # FanGame (Tankman) 体系
 
 > 凡公子（Tankman）78个视频，核心方法论：两性博弈、价值匹配、三线全修、认知破局

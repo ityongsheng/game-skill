@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game-kb-claim-v1",
+  "type": "object",
+  "required": ["claim_type", "claim", "quote"],
+  "properties": {
+    "claim_type": {"enum": ["direct", "reported", "inference"]},
+    "claim": {"type": "string", "minLength": 1},
+    "quote": {"type": "string", "minLength": 1},
+    "locator": {"type": "string"},
+    "module_id": {"type": "string"},
+    "module_title": {"type": "string"},
+    "triggers": {"type": "array", "items": {"type": "string"}}
+  }
+}

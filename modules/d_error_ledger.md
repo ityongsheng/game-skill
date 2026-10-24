@@ -1,3 +1,11 @@
+---
+module_id: d-error-ledger
+title: 常见错误大全
+triggers: [常见错误, 搭讪错误, 约会错误, 聊天错误, 心态错误, 怎么改, 避免, 复盘]
+priority: 10
+description: 按阶段归类的既有错误清单和自查入口
+---
+
 # 常见错误大全
 
 > 合并 Mikey 与 凡公子 两边所有常见错误，去重归类为5大分类

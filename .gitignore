@@ -3,3 +3,7 @@
 *.swo
 *~
 .claude/
+__pycache__/
+*.pyc
+/FULL.md
+/FULL.md.gz

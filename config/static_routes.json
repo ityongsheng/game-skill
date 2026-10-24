@@ -1,0 +1,42 @@
+[
+  {
+    "id": "evidence-search",
+    "title": "逐来源证据检索",
+    "path": "KB_REFERENCE.md",
+    "triggers": ["原始转写", "时间戳引用", "原文查找", "资料检索", "原文怎么说", "来源", "出处", "考证"],
+    "priority": 18,
+    "description": "FTS5 与向量证据检索、精读和回溯协议"
+  },
+  {
+    "id": "approach-decision",
+    "title": "搭讪场景决策树",
+    "path": "decision_trees/approach_flow.md",
+    "triggers": ["搭讪场景", "怎么开场合适", "搭讪决策", "场景判断"],
+    "priority": 8,
+    "description": "按状态、场景和对象导航搭讪路径"
+  },
+  {
+    "id": "date-decision",
+    "title": "约会转场决策树",
+    "path": "decision_trees/date_flow.md",
+    "triggers": ["什么时候转场", "约会到哪步", "转场决策", "私密空间时机", "约会决策"],
+    "priority": 8,
+    "description": "按阶段和信号导航约会转场"
+  },
+  {
+    "id": "script-template",
+    "title": "话术模板",
+    "path": "templates/scripts.json",
+    "triggers": ["开场白模板", "邀约模板", "怎么说", "话术", "回复模板", "台词", "帮我回复"],
+    "priority": 8,
+    "description": "保留变量的既有话术模板"
+  },
+  {
+    "id": "cross-reference",
+    "title": "双导师交叉对照",
+    "path": "index/cross_mapping.csv",
+    "triggers": ["Mikey和Tankman对比", "两种方法哪个好", "综合观点", "交叉对照", "双视角", "比较两套理论"],
+    "priority": 7,
+    "description": "Mikey 与 Tankman 主题对照"
+  }
+]

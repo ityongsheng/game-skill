@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game-kb-source-v1",
+  "type": "object",
+  "required": ["source_id", "sha256", "size_bytes", "status", "aliases"],
+  "properties": {
+    "source_id": {"type": "string"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "size_bytes": {"type": "integer", "minimum": 0},
+    "status": {"enum": ["processing", "complete", "manifest_only", "failed"]},
+    "availability": {"enum": ["raw_present", "embedded_text", "manifest_only"]},
+    "aliases": {"type": "array", "items": {"type": "object"}}
+  }
+}

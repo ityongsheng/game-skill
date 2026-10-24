@@ -1,3 +1,11 @@
+---
+module_id: a-mikey-system
+title: Mikey 搭讪学体系
+triggers: [Mikey, 搭讪, 自然流, 隐形支配, 状态, 一致性, 松弛感, 坚定感, 微信聊天, 约会流程, 女本位, NPC觉醒]
+priority: 10
+description: Mikey 搭讪、约会、网聊、心态、框架与社会观察体系
+---
+
 # Mikey 搭讪学体系
 
 > Mikey（搭讪玩家TV）76个视频，核心方法论：自然流搭讪、隐形支配、状态流、女本位批判

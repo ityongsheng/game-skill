@@ -1,75 +1,57 @@
 ---
 name: game-skill
-description: |
-  搭讪学+两性博弈完整技能体系。基于Mikey(搭讪玩家)76个视频+凡公子(Tankman)78个视频的系统提炼，
-  共154个视频、~134万字原始转录。涵盖搭讪实战、约会全流程、网聊技巧、心态内核、框架控制、
-  女本位批判、17种女生类型处理策略、常见错误大全。
-  
-  触发词：搭讪、约会、把妹、撩妹、怎么追、怎么约、怎么聊、怎么收尾
-  框架、行为线索、御姐、绿茶、社恐女、缺安全感、女生类型、PUA
-  Game、Game技巧、搭讪学、两性博弈、怎么吸引、怎么保持框架
-  隐形支配、松弛感、坚定感、个性样本、筛选心态、废物测试
-
-  也触发：帮我想个开场白、她不回消息怎么办、约会冷场怎么办
-  怎么带回家、女生说不要怎么办、怎么判断她对我有没有意思
-
-  女本位、供养者、猎人特质、阿尔法男性、NPC觉醒
-
-  不在用户只是问「怎么谈恋爱」「怎么追女生」等太宽泛的问题时触发——
-  只在涉及具体搭讪技术、约会操作、框架博弈、女生分类处理时激活。
+description: >
+  Codex/Claude 共用的 Game 理论知识库查询与增量维护 Skill。用于回答 Mikey、Tankman、
+  连招流、PUA 历史、女生类型、搭讪、约会、聊天、框架等问题；也用于把视频、音频、
+  PDF、EPUB、DOCX、图片、Markdown、字幕、JSON 或目录加入知识库，恢复处理中断，
+  生成逐来源结论，增量更新模块、全文与向量索引、FULL.md，以及在用户明确说“更新并发布”
+  时同步 GitHub Release、Google Drive、Codex 和 Claude。不要对观点做立场筛选、删减或
+  强制对齐；矛盾观点按来源并列保留，无法归类时创建新模块。
 ---
 
-# game-skill v2.0: 搭讪学 + 两性博弈 完整技能体系 (Thin Loader)
+# game-skill v4
 
-> 基于 FanGame(Tankman) 78个视频 + Mikey(搭讪玩家) 76个视频的系统提炼
-> 模块化版本 v2.0 | 2026-06-23
+这是一个薄入口。仓库是控制层，默认数据根目录是 `/Users/liyongsheng/Documents/Game知识库`。
+不要把 `FULL.md` 整体加载进上下文；用 `scripts/game-kb` 检索、精读和增量处理。
 
-## 模块结构
+## 意图路由
 
-本技能已重构为多文件协作的模块化结构。核心路由入口为 `skill.yaml`。
+- 查询理论、案例、原文或比较流派：先读 `skill.yaml`，按触发词加载一到多个 `modules/*.md`；需要完整证据时运行 `scripts/game-kb search "<query>" --top-k 8`，再运行 `scripts/game-kb read <chunk-id>`。
+- 加入单个文件或目录：运行 `scripts/game-kb update <path>`，然后处理下述 Agent 蒸馏队列。
+- “处理 inbox”：运行 `scripts/game-kb update /Users/liyongsheng/Documents/Game知识库/inbox`。
+- 查看或恢复：运行 `scripts/game-kb status`，再继续 `next-job`；不要重头处理已接受任务。
+- “更新并发布”：运行 `scripts/game-kb update <path> --publish`。只有这个明确意图或直接 `publish` 命令才允许外部写入。
+- 仅验证或构建：分别运行 `scripts/game-kb verify --full`、`scripts/game-kb build-full`。
 
-```
-skill.yaml                  # 主路由表：触发关键词 / 意图匹配 / 技术速查
-├── modules/
-│   ├── a_mikey_system.md   # Mikey搭讪学体系 (A1-A7)
-│   ├── b_tankman_system.md # Tankman体系 (B1-B5)
-│   ├── c_girl_types.md     # 17种女生类型处理策略（含双导师合成）
-│   ├── d_error_ledger.md   # 常见错误大全 (5大分类 + 阶段自查)
-│   └── f_golden_quotes.md  # 原文金句录 (含话题/场景标签索引)
-├── decision_trees/
-│   ├── approach_flow.md    # 搭讪场景决策树（状态→场景→类型→话术）
-│   └── date_flow.md        # 约会转场决策树（阶段→IOI→ASD→私密空间）
-├── templates/
-│   └── scripts.json        # 话术模板库（开场/邀约/ASD破解/微信回复 + {{变量}}）
-└── index/
-    └── cross_mapping.csv   # Mikey vs Tankman 双导师交叉对照 (14个主题)
-```
+完整协议、命令和故障恢复见 `KB_REFERENCE.md`。
 
-## 加载协议 (Load Protocol)
+## Agent 蒸馏循环
 
-1. **初始化加载**: 读取 `skill.yaml` 获取路由表、触发词和技术速查表
-2. **意图匹配**: 根据用户提问中的关键词，匹配 `skill.yaml` 的 `intents` 数组
-3. **按需加载**: 只加载匹配意图对应的模块文件，不加载无关模块
-4. **多模块叠加**: 当用户问题跨多个意图时（如"搭讪御姐怎么办"），叠加加载 `a_mikey_system.md` + `c_girl_types.md`
-5. **决策树优先**: 当用户描述具体场景（"我在街上看到一个女生..."），优先加载决策树文件导航
-6. **模板查询**: 当用户要"开场白"/"怎么说"/"怎么回复"，加载 `templates/scripts.json` 并填入变量
-7. **交叉对照**: 当用户问"Mikey和Tankman有什么不同"或需双视角时，加载 `index/cross_mapping.csv`
-8. **错误检查**: 当用户描述自身困境（"我总是不敢上前/总是聊崩"），加载 `d_error_ledger.md` 自查
+资料确定性提取完成后，循环执行：
 
-## 优先级规则
+1. 运行 `scripts/game-kb next-job --max-chars 12000`。
+2. 如果返回 `status: empty`，结束。
+3. 只基于返回片段生成符合 `schemas/claim.schema.json` 的 JSON：
+   - `claim_type` 仅表示证据关系：`direct`、`reported`、`inference`；
+   - `quote` 必须逐字出现在片段中；
+   - 已有模块自然容纳时写 `module_id`；
+   - 不能自然归类时提供新的稳定 `module_id`、`module_title` 和 `triggers`；
+   - 不要为了与旧体系一致而改变新观点；冲突结论分别输出。
+4. 将 JSON 写入临时文件并运行 `scripts/game-kb accept-job <job-id> <result.json>`。
+5. 引文验证失败时修正当前结果，不要跳过或伪造引用。
 
-skill.yaml 中定义了意图优先级（priority）：
-- **15**: 女生类型精确匹配（最高优先级，触发即加载 c_girl_types.md）
-- **10**: 具体技术匹配（搭讪/约会/聊天/心态等操作技术）
-- **8**: 决策树/模板查询（场景描述、"怎么说"类请求）
-- **7**: 交叉对照（双导师对比类问题）
-- **5**: 理论/社会观察类（女本位、认知破局）
-- **3**: 金句引用（最低优先级，作为补充材料）
+每次 `accept-job` 只增补相关模块，不重写整个旧模块；路由、模块目录由模块 YAML 元数据自动生成。
 
-多个意图同时匹配时，按优先级排序；同优先级叠加加载所有匹配模块。
+## 内容保持规则
 
-## 第三方引用声明
+- 不进行立场、安全、风险或偏激程度筛选，不因观点刺耳而删除、改写或降权。
+- 每个来源先独立保存；原件写入 `raw/sha256/` 后只读，提取和蒸馏不得覆盖原件。
+- 完全重复文件复用同一原件，但保留所有文件名和原路径 alias。
+- 相互冲突的观点并列写明来源；不要替用户裁决。
+- `direct/reported/inference` 只用于回溯证据，不是价值判断。
+- 不确定的抽取块进入 `unparsed/`；解析失败不得静默丢弃。
 
-> 本技能内容基于 Mikey(搭讪玩家TV) 和 FanGame(凡公子/Tankman) 的公开视频内容提炼。
-> 所有知识产权归原作者所有。本技能仅作为AI辅助学习工具，不构成行为指导。
-> 内容仅供成年用户参考，请注意现实社交中的法律和道德边界。
+## 发布边界
+
+普通查询、普通 `update`、`build-full` 和 `verify` 不进行 GitHub、Drive、Git 提交或安装目录写入。
+用户明确要求“更新并发布”后，CLI 才执行完整验证、版本递增、打包、提交推送、GitHub Release、Drive 校验和本机双安装同步。任一步失败都报告 `partial` 并保留本地发布状态供重试。

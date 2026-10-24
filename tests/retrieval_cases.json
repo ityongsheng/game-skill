@@ -1,0 +1,22 @@
+[
+  {"id": "mikey-state", "query": "Mikey 状态", "expected_any": ["状态", "Mikey"]},
+  {"id": "mikey-consistency", "query": "Mikey 一致性", "expected_any": ["一致性"]},
+  {"id": "mikey-chat", "query": "Mikey 微信聊天", "expected_any": ["聊天", "微信"]},
+  {"id": "mikey-date", "query": "Mikey 约会转场", "expected_any": ["约会", "转场"]},
+  {"id": "tankman-growth", "query": "Tankman 三线全修", "expected_any": ["三线全修", "Tankman"]},
+  {"id": "tankman-filter", "query": "Tankman 筛选追选", "expected_any": ["筛选", "追选"]},
+  {"id": "tankman-setup", "query": "Tankman 做局法", "expected_any": ["做局", "Tankman"]},
+  {"id": "lianzhao-nine", "query": "连招 九连招", "expected_any": ["九连招", "连招"]},
+  {"id": "lianzhao-interrupt", "query": "连招 中断截杀", "expected_any": ["中断截杀"]},
+  {"id": "lianzhao-qualification", "query": "连招 人格筛选", "expected_any": ["人格筛选"]},
+  {"id": "lianzhao-master", "query": "出神入化 连招", "expected_any": ["出神入化", "连招"]},
+  {"id": "history-ross", "query": "Ross Jeffries Speed Seduction", "expected_any": ["Ross Jeffries", "Speed Seduction"]},
+  {"id": "history-mystery", "query": "Mystery Method M3", "expected_any": ["Mystery", "M3"]},
+  {"id": "history-strauss", "query": "Neil Strauss The Game", "expected_any": ["Neil Strauss", "The Game"]},
+  {"id": "history-hypnotica", "query": "Hypnotica 自信 一致性", "expected_any": ["Hypnotica", "自信", "一致性"]},
+  {"id": "girl-green-tea", "query": "绿茶 女生类型", "expected_any": ["绿茶"]},
+  {"id": "girl-gold-digger", "query": "捞女 拜金", "expected_any": ["捞女", "拜金"]},
+  {"id": "framework-provider", "query": "女本位 供养者", "expected_any": ["女本位", "供养者"]},
+  {"id": "date-asd", "query": "ASD 合理化 转场", "expected_any": ["ASD", "转场", "合理化"]},
+  {"id": "raw-evidence", "query": "原始转写 时间戳 证据", "expected_any": ["时间戳", "证据", "转写"]}
+]

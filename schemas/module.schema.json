@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game-kb-module-v1",
+  "type": "object",
+  "required": ["module_id", "title", "triggers", "priority"],
+  "properties": {
+    "module_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "triggers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "priority": {"type": "integer", "minimum": 0, "maximum": 100}
+  }
+}

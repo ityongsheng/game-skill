@@ -1,0 +1,220 @@
+{
+  "generated": true,
+  "modules": [
+    {
+      "description": "Mikey 搭讪、约会、网聊、心态、框架与社会观察体系",
+      "id": "a-mikey-system",
+      "path": "modules/a_mikey_system.md",
+      "priority": 10,
+      "title": "Mikey 搭讪学体系",
+      "triggers": [
+        "Mikey",
+        "搭讪",
+        "自然流",
+        "隐形支配",
+        "状态",
+        "一致性",
+        "松弛感",
+        "坚定感",
+        "微信聊天",
+        "约会流程",
+        "女本位",
+        "NPC觉醒"
+      ]
+    },
+    {
+      "description": "Tankman 两性关系、形象、男性成长、事业与社会观察体系",
+      "id": "b-tankman-system",
+      "path": "modules/b_tankman_system.md",
+      "priority": 10,
+      "title": "FanGame Tankman 体系",
+      "triggers": [
+        "Tankman",
+        "凡公子",
+        "两性博弈",
+        "筛选追选",
+        "价值匹配",
+        "做局法",
+        "真假窗口",
+        "男性成长",
+        "三线全修",
+        "穿搭",
+        "赚钱"
+      ]
+    },
+    {
+      "description": "既有材料中的女生类型识别与处理策略合集",
+      "id": "c-girl-types",
+      "path": "modules/c_girl_types.md",
+      "priority": 15,
+      "title": "女生类型处理大全",
+      "triggers": [
+        "女生类型",
+        "御姐",
+        "绿茶",
+        "社恐",
+        "高冷",
+        "捞女",
+        "拜金",
+        "白富美",
+        "女权",
+        "留学生",
+        "模特",
+        "网红",
+        "富婆",
+        "独立女性"
+      ]
+    },
+    {
+      "description": "按阶段归类的既有错误清单和自查入口",
+      "id": "d-error-ledger",
+      "path": "modules/d_error_ledger.md",
+      "priority": 10,
+      "title": "常见错误大全",
+      "triggers": [
+        "常见错误",
+        "搭讪错误",
+        "约会错误",
+        "聊天错误",
+        "心态错误",
+        "怎么改",
+        "避免",
+        "复盘"
+      ]
+    },
+    {
+      "description": "按来源和场景标注的既有原文金句",
+      "id": "f-golden-quotes",
+      "path": "modules/f_golden_quotes.md",
+      "priority": 3,
+      "title": "原文金句录",
+      "triggers": [
+        "金句",
+        "原文引用",
+        "Mikey说",
+        "凡公子说",
+        "经典语录",
+        "原文怎么说"
+      ]
+    },
+    {
+      "description": "连招流九连招、五大训练模块与出神入化体系",
+      "id": "g-lianzhao-system",
+      "path": "modules/g_lianzhao_system.md",
+      "priority": 10,
+      "title": "连招流体系",
+      "triggers": [
+        "连招",
+        "九连招",
+        "性期待",
+        "中断截杀",
+        "人格筛选",
+        "联系感",
+        "有利描述",
+        "自我引导",
+        "出神入化",
+        "撩道",
+        "恋爱契约"
+      ]
+    },
+    {
+      "description": "PUA 社区历史、人物、文献、流派演化与既有批判材料",
+      "id": "h-pua-history",
+      "path": "modules/h_pua_history.md",
+      "priority": 7,
+      "title": "PUA 社区历史与人物谱系",
+      "triggers": [
+        "PUA历史",
+        "Speed Seduction",
+        "Ross Jeffries",
+        "Mystery Method",
+        "Neil Strauss",
+        "The Game",
+        "RSD",
+        "Owen Cook",
+        "Hypnotica",
+        "红丸觉醒",
+        "社区历史"
+      ]
+    }
+  ],
+  "name": "game-skill",
+  "resources": [
+    {
+      "description": "FTS5 与向量证据检索、精读和回溯协议",
+      "id": "evidence-search",
+      "path": "KB_REFERENCE.md",
+      "priority": 18,
+      "title": "逐来源证据检索",
+      "triggers": [
+        "原始转写",
+        "时间戳引用",
+        "原文查找",
+        "资料检索",
+        "原文怎么说",
+        "来源",
+        "出处",
+        "考证"
+      ]
+    },
+    {
+      "description": "按状态、场景和对象导航搭讪路径",
+      "id": "approach-decision",
+      "path": "decision_trees/approach_flow.md",
+      "priority": 8,
+      "title": "搭讪场景决策树",
+      "triggers": [
+        "搭讪场景",
+        "怎么开场合适",
+        "搭讪决策",
+        "场景判断"
+      ]
+    },
+    {
+      "description": "按阶段和信号导航约会转场",
+      "id": "date-decision",
+      "path": "decision_trees/date_flow.md",
+      "priority": 8,
+      "title": "约会转场决策树",
+      "triggers": [
+        "什么时候转场",
+        "约会到哪步",
+        "转场决策",
+        "私密空间时机",
+        "约会决策"
+      ]
+    },
+    {
+      "description": "保留变量的既有话术模板",
+      "id": "script-template",
+      "path": "templates/scripts.json",
+      "priority": 8,
+      "title": "话术模板",
+      "triggers": [
+        "开场白模板",
+        "邀约模板",
+        "怎么说",
+        "话术",
+        "回复模板",
+        "台词",
+        "帮我回复"
+      ]
+    },
+    {
+      "description": "Mikey 与 Tankman 主题对照",
+      "id": "cross-reference",
+      "path": "index/cross_mapping.csv",
+      "priority": 7,
+      "title": "双导师交叉对照",
+      "triggers": [
+        "Mikey和Tankman对比",
+        "两种方法哪个好",
+        "综合观点",
+        "交叉对照",
+        "双视角",
+        "比较两套理论"
+      ]
+    }
+  ],
+  "version": "4.0.0"
+}

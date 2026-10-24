@@ -1,3 +1,11 @@
+---
+module_id: f-golden-quotes
+title: 原文金句录
+triggers: [金句, 原文引用, Mikey说, 凡公子说, 经典语录, 原文怎么说]
+priority: 3
+description: 按来源和场景标注的既有原文金句
+---
+
 # 原文金句录
 
 > 精选原文中最具冲击力的引述，标注来源与话题标签
